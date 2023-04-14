@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "amazon-cognito-identity-js": "^6.2.0",
+    "axios": "^1.3.5",
+    "mocha": "^10.2.0"
+  }
+}
