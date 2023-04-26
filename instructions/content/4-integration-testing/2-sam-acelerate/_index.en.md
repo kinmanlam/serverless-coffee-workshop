@@ -24,7 +24,7 @@ Now the AWS SAM framework will generate a changeset by completely analysis of yo
 Great! But can it be done faster? Yes!
 
 ## AWS SAM Accelerate ##
-AWS SAM Accelerate is a collect of tools and additonal features designed to speed up common development operations such as deploying code changes. We will use the `sam sync` command to see how we can simply making code changes to Lambda functions.
+AWS SAM Accelerate is a collection of tools and features designed to speed up common development operations such as deploying code changes. We will use the `sam sync` command to see how we can simply making code changes to Lambda functions.
 
 1. `sam sync --stack-name serverlesspresso-backend --code --watch`
 * `--code`: Limits the syncing to Lambda code changes. SAM template changes will not be synced.
