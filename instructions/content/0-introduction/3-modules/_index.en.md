@@ -13,3 +13,4 @@ This section | Introduction | Learn about the Serverlesspresso application.
 [1b](../1b-workflow.html) | Building the workflow - Part 2 | Finish and test the workflow.
 [2](../2-events.html) | Routing events with EventBridge | Using events to communicate between different microservices.
 [3](../3-web-apps.html) | Configure the front ends | Build a service that sends messages back to the frontends with an open websocket connection.
+[4](../4-integration-testing.html) | Testing in the Cloud | Integration testing using the CLI and AWS SAM.
