@@ -37,4 +37,6 @@ console.log('Handler: Finish')
 
 If you look at your console you see that AWS SAM detected the change to the `configChanged.js` file and automatically built and deployed the code update to the Lambda function. The second thing to notice is how faster and seamless it was to deploy your local code changes to the cloud environment.
 
+4. To end the syncing, return to the console and press and hold `Ctrl` and `C` to cancel the foreground task performing the `sam sync`. 
+
 To learn more about other features of AWS SAM Accelerate read the blog: [Acclerating serverless development with AWS SAM Accelerate](https://aws.amazon.com/blogs/compute/accelerating-serverless-development-with-aws-sam-accelerate/)
