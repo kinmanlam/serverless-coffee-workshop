@@ -39,4 +39,4 @@ If you look at your console you see that AWS SAM detected the change to the `con
 
 4. To end the syncing, return to the console and press and hold `Ctrl` and `C` to cancel the foreground task performing the `sam sync`. 
 
-To learn more about other features of AWS SAM Accelerate read the blog: [Acclerating serverless development with AWS SAM Accelerate](https://aws.amazon.com/blogs/compute/accelerating-serverless-development-with-aws-sam-accelerate/)
+To learn more about other features of AWS SAM Accelerate read the blog: [Accelerating serverless development with AWS SAM Accelerate](https://aws.amazon.com/blogs/compute/accelerating-serverless-development-with-aws-sam-accelerate/)
