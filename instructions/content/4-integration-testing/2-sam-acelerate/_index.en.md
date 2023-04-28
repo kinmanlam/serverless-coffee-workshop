@@ -1,6 +1,6 @@
 +++
 title = "AWS SAM and AWS SAM Accelerate"
-weight = 11
+weight = 12
 +++
 
 Now that you have completed the [Get the code from GitHub](../99-the-code/5-deploy.html) section. You have a fully configured AWS SAM environment.

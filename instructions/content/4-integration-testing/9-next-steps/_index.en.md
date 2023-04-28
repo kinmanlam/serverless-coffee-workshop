@@ -1,6 +1,6 @@
 +++
-title = "Next Steps"
-weight = 11
+title = "Further Learning"
+weight = 20
 +++
 
 Now that you have a base understanding of AWS SAM, consider checking out:

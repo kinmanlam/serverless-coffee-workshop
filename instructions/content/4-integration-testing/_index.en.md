@@ -1,7 +1,7 @@
 +++
 title = "Integration Testing"
 chapter = true
-weight = 12
+weight = 14
 pre = "<b>4. </b>"
 +++
 

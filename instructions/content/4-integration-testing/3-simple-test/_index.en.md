@@ -1,6 +1,6 @@
 +++
-title = "AWS SAM and AWS SAM Accelerate"
-weight = 11
+title = "Simple Integration Test"
+weight = 13
 +++
 
 ## Node.js module setup ##
