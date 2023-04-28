@@ -24,7 +24,7 @@ With emulators this improves the test coverage over the mocking technique. The c
 - Overhead with setting up and keeping emulators up-to-date
 
 ### Testing In The Cloud
-With the [annoucement of AWS SAM Acelerate](https://aws.amazon.com/about-aws/whats-new/2022/06/aws-sam-accelerate-test-code-against-cloud/) it is now easier to develop and test locally while actually deploying and executing you code changes in the cloud.
+With the [annoucement of AWS SAM Accelerate](https://aws.amazon.com/about-aws/whats-new/2022/06/aws-sam-accelerate-test-code-against-cloud/) it is now easier to develop and test locally while actually deploying and executing you code changes in the cloud.
 
 Testing in the cloud allows you to mirror your production environment and ensures IAM policies, service quotas and configurations are covered.
 

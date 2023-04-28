@@ -1,9 +1,9 @@
 +++
-title = "Simple Integration Test"
+title = "Testing Synchronous Services"
 weight = 13
 +++
 
-To demonstrate a simple integration test we will testing the deployed API Gateway to confirm that the data transformation and mapping template were implemented correct to faciliate the PUT and GET of the store configuration to the `serverlesspresso-config-table`.  
+To demonstrate how to test a synchronous service we will test the deployed API Gateway to confirm that the data transformation and mapping template were implemented correct to faciliate the PUT and GET of the store configuration to the DynamoDB `serverlesspresso-config-table`.  
 
 ## Node.js modules setup ##
 We will be using the Mocha framework to perform the integration testing. To setup the testing environment you will need to:
