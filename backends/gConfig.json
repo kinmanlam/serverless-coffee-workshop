@@ -1,9 +1,3 @@
 {
-    "configApiGateway": "<Insert Config Gateway URL>",
-    "cognito": {
-        "username": "<Insert User Name for Account Created>",
-        "password": "<Insert Password>",
-        "userPoolId": "<Insert Cognito User Pool ID>",
-        "clientId": "<Insert Cognito Client ID>"
-    }
+    "configApiGateway": "<Insert Config Gateway URL>"
 }
