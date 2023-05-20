@@ -1,18 +1,16 @@
-const gConfig = require('./../../gConfig.json')
 const assert = require('assert')
 const axios = require('axios')
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 const AWS = require('aws-sdk')
 const {describe, before, it} = require('mocha')
-const { log } = require('console')
+
 
 describe('API Data Endpoint', function () {
-  const rootUrl = gConfig.configApiGateway
+  const rootUrl = '<INSERT CONFIG API GATEWAY URL>'
   const poolData = {
     UserPoolId: null,
     ClientId: null
   }
-
   const login = {
     Username: null,
     Password: null
@@ -87,24 +85,23 @@ describe('API Data Endpoint', function () {
     let ssps = new AWS.SecretsManager()
 
     // Get the UserPool Details from Parameter Store
-    let p1 = ssm.getParameter({Name: userpool_pname}).promise()     
-    let p2 = ssm.getParameter({Name: userpoolclient_pname}).promise()
-
-    await Promise.all([p1, p2]).then((data) => {
-      data.forEach(element => {
-        if (element.Parameter.Name == userpool_pname) {
-          poolData.UserPoolId = element.Parameter.Value
-        }
-        if (element.Parameter.Name == userpoolclient_pname) {
-          poolData.ClientId = element.Parameter.Value
-        }
+    await ssm.getParameters({Names: [userpool_pname, userpoolclient_pname]}).promise()     
+      .then((data) => {
+        console.log(data)
+        data.Parameters.forEach(element => {
+          if (element.Name == userpool_pname) {
+            poolData.UserPoolId = element.Value
+          }
+          if (element.Name == userpoolclient_pname) {
+            poolData.ClientId = element.Value
+          }
+        })
       })
-    })
-    
+
     await ssps.getSecretValue({SecretId: apilogin_pname}).promise()
       .then(data => {
-        login.Username = JSON.parse(data.SecretString).Username
-        login.Password = JSON.parse(data.SecretString).Password
+        login.Username = JSON.parse(data.SecretString).username
+        login.Password = JSON.parse(data.SecretString).password
     })
   }
 
