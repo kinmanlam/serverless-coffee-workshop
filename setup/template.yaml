@@ -31,6 +31,17 @@ Parameters:
     Type: String
     Description: Event bus source by application
     Default: 'awsserverlessda.serverlesspresso'
+  DeployTestResources:
+    Description: The parameter instructs the template whether or not to deploy test resources to your environment.
+    Default: "True"
+    Type: String
+    AllowedValues:
+      - "True"
+      - "False"
+    ConstraintDescription: Allowed values are True and False
+
+Conditions:
+  CreateTestResources: !Equals [!Ref DeployTestResources, "True"]
 
 Globals:
   Api:
@@ -830,6 +841,38 @@ Resources:
             Action:
             - states:SendTaskSuccess
             Resource: '*'
+
+### TEST HARNESS ###
+  TestHarnessFunction:
+    Type: AWS::Serverless::Function
+    Condition: CreateTestResources
+    Properties:
+      CodeUri: ../backends/12-test-harness/code
+      Handler: eventbridge-listener.handler
+      Runtime: nodejs14.x
+      Timeout: 15
+      MemorySize: 128
+      Environment:
+        Variables:
+          TableName: !Ref TestHarnessTable
+      Policies:
+        - DynamoDBWritePolicy:
+              TableName: !Ref TestHarnessTable
+
+  TestHarnessTable:
+    Type: AWS::DynamoDB::Table
+    Condition: CreateTestResources
+    Properties: 
+      TableName: "serverlesspresso-test-harness"
+      AttributeDefinitions: 
+        - AttributeName: id
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2
 
 #############################################
 # < /Order Manager  service > #
