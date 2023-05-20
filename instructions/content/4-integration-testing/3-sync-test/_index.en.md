@@ -11,11 +11,24 @@ We will be using the Mocha framework to perform the integration testing. To setu
 ```
 cd ~/environment/serverlesspresso
 ```
-2. Install the necessary Node.js module dependencies which consists of `amazon-cognito-identity-js, axios,` and `mocha` using this command:
+2. Install the necessary Node.js module dependencies which consists of `amazon-cognito-identity-js, aws-sdk, axios,` and `mocha` using this command:
 ```code
 npm install
 ```
 3. Open and update the `gConfig.json` file with the appropriate values.
+
+## 
+
+## Securely Storing API Login Credentials ##
+The user pool and client ID have already been stored to the Parameter Store in AWS Systems Manager. AWS Secrets Manager can be used to securely store the login credentials that the integration tests will retrieve and use.
+
+To will create a secret named `/Serverlesspresso/core/apilogin` which will store the username and password key-value pairs.
+
+```
+aws secretsmanager create-secret --name /Serverlesspresso/core/apilogin --secret-string '{"username": "<User Email>", "password":"<Password>"}'
+```
+
+## Config API URL
 
 
 ## Simple PUT / GET Integration Testing ##

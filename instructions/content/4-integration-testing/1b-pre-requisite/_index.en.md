@@ -9,3 +9,5 @@ To do this please complete the [Get the code from GitHub](../99-the-code/5-deplo
 
 ## 2. A valid Cognito user account ##
 All the API endpoints are authenticated using Amazon Cognito. You will need to have the user credentials created from completing the section [3. Configuring the frontends](../3-web-apps/3-frontends/1-displayapp.html).
+
+You will need to know the user name and password used to access the API. In this section of the workshop we will be securely storing the credentials into AWS Secrets Manager.
