@@ -842,38 +842,6 @@ Resources:
             - states:SendTaskSuccess
             Resource: '*'
 
-### TEST HARNESS ###
-  TestHarnessFunction:
-    Type: AWS::Serverless::Function
-    Condition: CreateTestResources
-    Properties:
-      CodeUri: ../backends/12-test-harness/code
-      Handler: eventbridge-listener.handler
-      Runtime: nodejs14.x
-      Timeout: 15
-      MemorySize: 128
-      Environment:
-        Variables:
-          TableName: !Ref TestHarnessTable
-      Policies:
-        - DynamoDBWritePolicy:
-              TableName: !Ref TestHarnessTable
-
-  TestHarnessTable:
-    Type: AWS::DynamoDB::Table
-    Condition: CreateTestResources
-    Properties: 
-      TableName: "serverlesspresso-test-harness"
-      AttributeDefinitions: 
-        - AttributeName: id
-          AttributeType: S
-      KeySchema: 
-        - AttributeName: id
-          KeyType: HASH
-      ProvisionedThroughput: 
-        ReadCapacityUnits: 2
-        WriteCapacityUnits: 2
-
 #############################################
 # < /Order Manager  service > #
 #############################################
@@ -919,6 +887,51 @@ Resources:
             Resource: !Join [ "", [ "arn:aws:states:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":stateMachine:", "*"] ]
       Roles:
         - Ref: "01OrderProcessorRole"
+
+##########################################################################
+# TEST HARNESS                                                           #
+##########################################################################
+  TestHarnessFunction:
+    Type: AWS::Serverless::Function
+    Condition: CreateTestResources
+    Properties:
+      CodeUri: ../backends/12-test-harness/code
+      Handler: eventbridge-listener.handler
+      Runtime: nodejs14.x
+      Timeout: 15
+      MemorySize: 128
+      Environment:
+        Variables:
+          TableName: !Ref TestHarnessTable
+      Policies:
+        - DynamoDBWritePolicy:
+              TableName: !Ref TestHarnessTable
+      # #Uncomment this code to capture ConfigService events
+      # Events:
+      #   TriggerValidator:
+      #     Type: EventBridgeRule
+      #     Properties:
+      #       EventBusName: "Serverlesspresso"
+      #       Pattern:
+      #         source:
+      #           - !Ref Source
+      #         detail-type:
+      #           - prefix: 'ConfigService.'
+
+  TestHarnessTable:
+    Type: AWS::DynamoDB::Table
+    Condition: CreateTestResources
+    Properties: 
+      TableName: "serverlesspresso-test-harness"
+      AttributeDefinitions: 
+        - AttributeName: id
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2
 
 ##########################################
 # Outputs                                #

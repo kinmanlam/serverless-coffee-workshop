@@ -15,7 +15,6 @@ cd ~/environment/serverlesspresso
 ```code
 npm install
 ```
-3. Open and update the `gConfig.json` file with the appropriate values.
 
 ## 
 
@@ -29,7 +28,14 @@ aws secretsmanager create-secret --name /Serverlesspresso/core/apilogin --secret
 ```
 
 ## Config API URL
+1. Open to the integration testing code `~/environment/serverlesspresso/backends/2-config-service/code/integrationTest.js`
 
+2. Locate the following code block:
+```code
+describe('API Data Endpoint', function () {
+  const rootUrl = '<INSERT CONFIG API GATEWAY URL>'
+```
+3. Update the `'<INSERT CONFIG API GATEWAY URL>'` with the URL of the `ConfigServiceRESTAPI`
 
 ## Simple PUT / GET Integration Testing ##
 1. Navigate to the `config-service`
