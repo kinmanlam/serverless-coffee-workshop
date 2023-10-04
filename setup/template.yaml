@@ -33,16 +33,16 @@ Parameters:
     Default: 'awsserverlessda.serverlesspresso'
   DeployTestResources:
     Description: The parameter instructs the template whether or not to deploy test resources to your environment.
-    Default: "True"
+    Default: "False"
     Type: String
     AllowedValues:
       - "True"
       - "False"
     ConstraintDescription: Allowed values are True and False
-
 Conditions:
-  CreateTestResources: !Equals [!Ref DeployTestResources, "True"]
-
+  CreateTestResources: !Equals
+      - !Ref DeployTestResources
+      - "False"
 Globals:
   Api:
     Cors:

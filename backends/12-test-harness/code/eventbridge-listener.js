@@ -1,11 +1,12 @@
+/*! Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *  SPDX-License-Identifier: MIT-0
+ */
+
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB();
 
 exports.handler = async (event) => {
   try {
-    // Extract the service name from the event
-    const { service } = event;
-
     // Create a new item in the DynamoDB table
     await dynamodb.putItem({
       TableName: process.env.TableName,
